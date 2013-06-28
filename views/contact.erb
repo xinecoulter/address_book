@@ -1,0 +1,16 @@
+<h1>Hey, girl. This is <%= @name %>'s contact information.</h1>
+<h3>Name: <%= "#{@first.capitalize} #{@last.capitalize}" %></h3>
+<h3>Age: <%= @age %></h3>
+<h3>Gender: <% if @gender == "f" %>
+              Female
+            <% else %>
+              Male
+            <% end %>
+</h3>
+<h3>DTGD: <% if @dtgd == true %>
+            Yes!
+          <% else %>
+            Nooo.
+          <% end %>
+</h3>
+<h3>Phone Number: <%= @phone %></h3>

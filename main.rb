@@ -41,8 +41,34 @@ end
 # get_contacts
 # binding.pry
 
-# This should list all the contact info
+# This should list all the contacts
 get '/' do
   @contacts = get_contacts
   erb :contacts
 end
+
+# This should show a single contact with contact info
+get '/contact/:name' do
+  @name = params[:name]
+  @contacts = get_contacts
+  @first = @contacts[@name]["first"]
+  @last = @contacts[@name]["last"]
+  @age = @contacts[@name]["age"]
+  @gender = @contacts[@name]["gender"]
+  @dtgd = @contacts[@name]["dtgd"]
+  @phone = @contacts[@name]["phone"]
+  erb :contact
+end
+
+
+
+
+
+
+
+
+
+
+
+
+

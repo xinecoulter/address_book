@@ -94,12 +94,3 @@ post '/new_contact' do
   redirect to("/contact/#{@first}")
 end
 
-
-
-
-
-
-
-
-
-

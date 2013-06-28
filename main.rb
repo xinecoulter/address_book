@@ -18,6 +18,7 @@ def get_contacts
       contacts_hash[contact] = row
     end
   end
+  db.close
   return contacts_hash
   # returns a hash of hashes...of hashes. 3D hashes!!
   # example:
@@ -67,8 +68,30 @@ end
 
 # This should create a new contact and add to the database
 post '/new_contact' do
+  @first = params[:first]
+  @last = params[:last]
+  @age = params[:age]
+  @gender = params[:gender]
+  @dtgd = params[:dtgd]
+  @phone = params[:phone]
 
-  redirect to("/contact/")
+  sql_age = @age.to_i
+
+  if @dtgd == "yes"
+    sql_dtgd = true
+  else
+    sql_dtgd = false
+  end
+
+  # database connection
+  db = PG.connect(:dbname => 'address_book', :host => 'localhost')
+
+  # string of sql to be passed to the address database
+  sql = "insert into contacts (first, last, age, gender, dtgd, phone) values ('#{@first}', '#{@last}', #{sql_age}, '#{@gender}', #{sql_dtgd}, '#{@phone}')"
+  db.exec(sql)
+  db.close
+
+  redirect to("/contact/#{@first}")
 end
 
 

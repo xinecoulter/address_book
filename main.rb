@@ -60,7 +60,10 @@ get '/contact/:name' do
   erb :contact
 end
 
-
+# This page should have a form to add a new contact, which will POST to /new_contact
+get '/new_contact' do
+  erb :new_contact
+end
 
 
 

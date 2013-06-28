@@ -20,12 +20,29 @@ def get_contacts
   end
   return contacts_hash
   # returns a hash of hashes...of hashes. 3D hashes!!
+  # example:
+  # {"max"=>
+  #  {"first"=>"max",
+  #   "last"=>"coulter",
+  #   "age"=>"28",
+  #   "gender"=>"m",
+  #   "dtgd"=>"f",
+  #   "phone"=>"434-604-4401"},
+  #   "david"=>
+  #   {"first"=>"david",
+  #   "last"=>"fischer",
+  #   "age"=>"30",
+  #   "gender"=>"m",
+  #   "gender"=>"m",
+  #   "dtgd"=>"t",
+  #   "phone"=>"555-555-5555"}}
 end
 
-get_contacts
-binding.pry
+# get_contacts
+# binding.pry
 
 # This should list all the contact info
-# get '/' do
-
-# end
+get '/' do
+  @contacts = get_contacts
+  erb :contacts
+end

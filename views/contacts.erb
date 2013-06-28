@@ -1,0 +1,11 @@
+<h1>Hey, girl. Checkout these contacts.<h1>
+
+<ul>
+  <% @contacts.each do |key, value| %>
+    <li>
+      <a href="">
+        <%= @contacts[key]["last"].capitalize %>, <%= @contacts[key]["first"].capitalize %>
+      </a>
+    </li>
+  <% end %>
+</ul>

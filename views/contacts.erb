@@ -3,7 +3,7 @@
 <ul>
   <% @contacts.each do |key, value| %>
     <li>
-      <a href="">
+      <a href="/contact/<%= @contacts[key]["first"] %>">
         <%= @contacts[key]["last"].capitalize %>, <%= @contacts[key]["first"].capitalize %>
       </a>
     </li>

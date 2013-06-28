@@ -12,7 +12,7 @@ def get_contacts
   db = PG.connect(:dbname => 'address_book', :host => 'localhost')
   # executes sql code
   # passes a string of sql to the address database
-  db.exec( "select first, last, age, gender, dtgd, phone from contacts") do |result|
+  db.exec("select first, last, age, gender, dtgd, phone from contacts") do |result|
     result.each do |row|
       contact = row["first"]
       contacts_hash[contact] = row
@@ -65,6 +65,11 @@ get '/new_contact' do
   erb :new_contact
 end
 
+# This should create a new contact and add to the database
+post '/new_contact' do
+
+  redirect to("/contact/")
+end
 
 
 
